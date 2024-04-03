@@ -31,7 +31,7 @@
     behaviors {
         // tap: comma | shift + tap: semicolon | ctrl + shift + tap: <
 
-        comma_morph: mod_morph {
+        comma_morph: comma_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp COMMA>, <&kp &comma_inner_morph>;
@@ -39,7 +39,7 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        comma_inner_morph: mod_morph {
+        comma_inner_morph: comma_inner_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp SEMICOLON>, <&kp LESS_THAN>;
@@ -49,7 +49,7 @@
 
         // tap: dot | shift + tap: colon | ctrl + shift + tap: >
 
-        dot_morph: mod_morph {
+        dot_morph: dot_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp DOT>, <&kp &dot_inner_morph>;
@@ -57,7 +57,7 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        dot_inner_morph: mod_morph {
+        dot_inner_morph: dot_inner_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp COLON>, <&kp GREATER_THAN>;
@@ -67,7 +67,7 @@
 
         // tap: qmark | shift + tap: excl
 
-        qmark_morph: mod_morph {
+        qmark_morph: qmark_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp QMARK>, <&kp &EXCL>;
@@ -77,7 +77,7 @@
 
         // tap: left/right parenthesis | shft + tap: less-than/greater-than
 
-        lpar_lt: mod_morph {
+        lpar_lt: lpar_lt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp LPAR>, <&kp &LT>;
@@ -85,7 +85,7 @@
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
 
-        rpar_gt: mod_morph {
+        rpar_gt: rpar_gt {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
             bindings = <&kp RPAR>, <&kp &RT>;
