@@ -34,7 +34,7 @@
         comma_morph: comma_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp COMMA>, <&kp &comma_inner_morph>;
+            bindings = <&kp COMMA>, <&comma_inner_morph>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
@@ -52,7 +52,7 @@
         dot_morph: dot_morph {
             compatible = "zmk,behavior-mod-morph";
             #binding-cells = <0>;
-            bindings = <&kp DOT>, <&kp &dot_inner_morph>;
+            bindings = <&kp DOT>, <&dot_inner_morph>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
         };
