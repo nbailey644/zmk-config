@@ -376,7 +376,7 @@
             key-positions = <39 40>;
         };
     };
-};
+
 
 //
 /* Keymap */
