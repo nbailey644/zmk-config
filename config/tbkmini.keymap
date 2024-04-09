@@ -372,7 +372,7 @@
             key-positions = <41 21 33>;
         };
         RH_NUM_WORD {
-            bindings = <&num_word>
+            bindings = <&num_word>;
             key-positions = <39 40>;
         };
     };
