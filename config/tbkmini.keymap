@@ -330,7 +330,7 @@
         };
 
         RH_RBRC {
-            bindings = <&kp RIGHT_BRACE>;
+            bindings = <&kp RIGHT_BRACKET>;
             key-positions = <32 33>;
         };
 
