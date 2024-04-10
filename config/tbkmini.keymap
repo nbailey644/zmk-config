@@ -164,13 +164,15 @@
 /* Macros */
 //
 
+/ {
     macros {
         bang_lead: bang_lead {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings = <&kp EXCL &kp N1 &kp LT &num_word>;
         };
-
+    };
+};
 
 //
 /* Combos */
