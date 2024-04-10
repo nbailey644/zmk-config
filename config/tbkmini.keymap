@@ -107,15 +107,26 @@
             bindings = <&kp RPAR>, <&kp GREATER_THAN>;
 
             mods = <(MOD_LSFT|MOD_RSFT)>;
+
         };
-		 num_word: behavior_num_word {
-			compatible = "zmk,behavior-caps-word";
-			label = "NUM_WORD";
-			#binding-cells = <0>;
-            layers = <1>;
-			continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
-            ignore-numbers;
-		};
+	num_word: behavior_num_word {
+		compatible = "zmk,behavior-caps-word";
+		label = "NUM_WORD";
+		#binding-cells = <0>;
+        	layers = <1>;
+		continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL KP_NUMBER_0 KP_NUMBER_1 KP_NUMBER_2 KP_NUMBER_3 KP_NUMBER_4 KP_NUMBER_5 KP_NUMBER_6 KP_NUMBER_7 KP_NUMBER_8 KP_NUMBER_9>;
+        	ignore-numbers;
+	};
+
+	shift_caps_word: shift_caps_word {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "hold-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <QUICK_TAP_MS>;
+            bindings = <&kp RIGHT_SHIFT>, <&caps_word>;
+        };
+
     };
 };
 
@@ -395,46 +406,46 @@
 
         layer_0 {
             bindings = <
-&kp TAB       &kp Q           &kp W  &kp E             &kp R                &kp T         &kp Y            &kp U        &kp I        &kp O         &kp P             &num_word
-&kp LEFT_GUI  &kp A           &kp S  &kp D             &kp F                &kp G         &kp H            &kp J        &kp K        &kp L         &dot_morph        &qmark_morph
-&kp CAPS      &kp LEFT_SHIFT  &kp Z  &kp X             &kp C                &kp V         &kp B            &kp N        &kp M        &comma_morph  &kp SINGLE_QUOTE  &kp RETURN
-                                     &mt LCTRL ESCAPE  &mt LEFT_ALT RETURN  &lt 3 DELETE  &kp BACKSPACE    &lt 2 SPACE  &mt RIGHT_SHIFT &caps_word
+&kp TAB       &kp Q           &kp W  &kp E             &kp R                &kp T               &kp Y            &kp U        &kp I             &kp O         &kp P             &num_word
+&kp LEFT_GUI  &kp A           &kp S  &kp D             &kp F                &kp G               &kp H            &kp J        &kp K             &kp L         &dot_morph        &qmark_morph
+&kp CAPS      &kp LEFT_SHIFT  &kp Z  &kp X             &kp C                &kp V               &kp B            &kp N        &kp M             &comma_morph  &kp SINGLE_QUOTE  &kp RETURN
+                                     &mt LCTRL ESCAPE  &mt LEFT_ALT RETURN  &lt 3 DELETE        &kp BACKSPACE    &lt 2 SPACE  &shift_caps_word
             >;
         };
 
         layer_1 {
             bindings = <
-&none  &none  &none  &none   &none   &none   &kp PLUS   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp ASTERISK  &none
-&trans &none  &none  &none   &none   &none   &none      &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &dot_morph    &none
-&none  &none  &none  &none   &none   &none   &kp MINUS  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp FSLH      &none
-                     &trans  &trans  &trans  &trans     &trans           &kp KP_NUMBER_0
+&trans  &trans  &trans  &trans  &trans  &trans        &kp PLUS   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp ASTERISK  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &dot_morph    &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &kp MINUS  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp FSLH      &trans
+                        &trans  &trans  &trans        &trans     &trans           &kp KP_NUMBER_0
             >;
         };
 
         layer_2 {
             bindings = <
-&none  &none  &none  &none   &none   &none   &none   &kp F7  &kp F8  &kp F9  &kp F10  &none
-&trans &none  &none  &none   &none   &none   &none   &kp F4  &kp F5  &kp F6  &kp F11  &none
-&none  &none  &none  &none   &none   &none   &none   &kp F1  &kp F2  &kp F3  &kp F12  &none
-                     &trans  &trans  &trans  &trans  &trans  &trans
+&none  &none  &none  &none   &none   &none         &none   &kp F7  &kp F8  &kp F9  &kp F10  &trans
+&trans &none  &none  &none   &none   &none         &none   &kp F4  &kp F5  &kp F6  &kp F11  &trans
+&none  &none  &none  &none   &none   &none         &none   &kp F1  &kp F2  &kp F3  &kp F12  &trans
+                     &trans  &trans  &trans        &trans  &trans  &trans
             >;
         };
 
         layer_3 {
             bindings = <
-&none  &none  &none  &none   &none   &none   &kp C_REWIND  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_FAST_FORWARD  &kp C_MUTE  &none
-&trans &none  &none  &none   &none   &none   &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT           &kp C_PP    &none
-&none  &none  &none  &none   &none   &none   &kp HOME      &kp PG_DN     &kp PG_UP     &kp END             &none       &none
-                     &trans  &trans  &trans  &trans        &trans        &trans
+&none  &none  &none  &none   &none   &none         &kp C_REWIND  &kp C_VOL_DN  &kp C_VOL_UP  &kp C_FAST_FORWARD  &kp C_MUTE  &trans
+&trans &none  &none  &none   &none   &none         &kp LEFT      &kp DOWN      &kp UP        &kp RIGHT           &kp C_PP    &trans
+&none  &none  &none  &none   &none   &none         &kp HOME      &kp PG_DN     &kp PG_UP     &kp END             &none       &trans
+                     &trans  &trans  &trans        &trans        &trans        &trans
             >;
         };
 
         layer_4 {
             bindings = <
-&kp GRAVE  &kp LS(EXCL)  &kp LS(AT)  &kp LS(POUND)  &kp LS(DLLR)  &kp LS(PRCNT)  &kp LS(CARET)   &kp LS(AMPS)    &kp LS(STAR)  &kp LS(LPAR)     &kp LS(RPAR)  &kp LS(UNDER)
-&trans     &none         &none       &none          &none         &none          &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &none         &none
-&none      &none         &none       &none          &none         &none          &none           &none           &none         &none            &none         &none
-                                     &trans         &trans        &trans         &mkp LCLK       &mkp RCLK       &mkp MCLK
+&kp GRAVE  &kp LS(EXCL)  &kp LS(AT)  &kp LS(POUND)  &kp LS(DLLR)  &kp LS(PRCNT)        &kp LS(CARET)   &kp LS(AMPS)    &kp LS(STAR)  &kp LS(LPAR)     &kp LS(RPAR)  &kp LS(UNDER)
+&trans     &none         &none       &none          &none         &none                &mmv MOVE_LEFT  &mmv MOVE_DOWN  &mmv MOVE_UP  &mmv MOVE_RIGHT  &none         &none
+&none      &none         &none       &none          &none         &none                &none           &none           &none         &none            &none         &trans
+                                     &trans         &trans        &trans               &mkp LCLK       &mkp RCLK       &mkp MCLK
             >;
         };
     };
