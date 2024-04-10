@@ -114,7 +114,7 @@
 		label = "NUM_WORD";
 		#binding-cells = <0>;
         	layers = <1>;
-		continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL LPAR RPAR GREATER_THAN LESS_THAN KP_NUMBER_0 KP_NUMBER_1 KP_NUMBER_2 KP_NUMBER_3 KP_NUMBER_4 KP_NUMBER_5 KP_NUMBER_6 KP_NUMBER_7 KP_NUMBER_8 KP_NUMBER_9>;
+		continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL LPAR RPAR GREATER_THAN LESS_THAN N0 N1 N2 N3 N4 N5 N6 N7 N8 N9>;
         	ignore-numbers;
 	};
 
@@ -159,6 +159,17 @@
 #define U_WH_D &msc SCRL_DOWN
 #define U_WH_L &msc SCRL_LEFT
 #define U_WH_R &msc SCRL_RIGHT
+
+//
+/* Macros */
+//
+
+    macros {
+        bang_lead: bang_lead {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp EXCL &kp N1 &kp LT &num_word>;
+        };
 
 
 //
@@ -393,6 +404,15 @@
             bindings = <&num_word>;
             key-positions = <39 40>;
         };
+        LH_CTRL_ALT_DEL {
+            bindings = <&kp LC(LA(DEL))>;
+            key-positions = <28 27 26>;
+        };
+
+        LH_BANG_LEAD {
+            bindings = <&bang_lead>;
+            key-positions = <27 26 25>;
+        };
     };
 
 
@@ -406,19 +426,19 @@
 
         layer_0 {
             bindings = <
-&kp TAB       &kp Q           &kp W  &kp E             &kp R                &kp T               &kp Y            &kp U        &kp I             &kp O         &kp P             &kp BACKSPACE
-&kp LEFT_GUI  &kp A           &kp S  &kp D             &kp F                &kp G               &kp H            &kp J        &kp K             &kp L         &dot_morph        &qmark_morph
-&kp CAPS      &kp LEFT_SHIFT  &kp Z  &kp X             &kp C                &kp V               &kp B            &kp N        &kp M             &comma_morph  &kp SINGLE_QUOTE  &kp RETURN
-                                     &mt LCTRL ESCAPE  &mt LEFT_ALT RETURN  &lt 3 DELETE        &lt 1 BACKSPACE  &lt 2 SPACE  &shift_caps_word RIGHT_SHIFT 0
+&kp TAB       &kp Q           &kp W  &kp E             &kp R                &kp T               &kp Y          &kp U        &kp I             &kp O         &kp P             &num_word
+&kp LEFT_GUI  &kp A           &kp S  &kp D             &kp F                &kp G               &kp H          &kp J        &kp K             &kp L         &dot_morph        &qmark_morph
+&kp CAPS      &kp LEFT_SHIFT  &kp Z  &kp X             &kp C                &kp V               &kp B          &kp N        &kp M             &comma_morph  &kp SINGLE_QUOTE  &kp RETURN
+                                     &mt LCTRL ESCAPE  &mt LEFT_ALT RETURN  &lt 3 DELETE        &kp BACKSPACE  &lt 2 SPACE  &shift_caps_word RIGHT_SHIFT 0
             >;
         };
 
         layer_1 {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans        &kp PLUS   &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp ASTERISK  &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &trans     &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &dot_morph    &trans
-&trans  &trans  &trans  &trans  &trans  &trans        &kp MINUS  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp FSLH      &trans
-                        &trans  &trans  &trans        &trans     &trans           &mt RIGHT_SHIFT KP_NUMBER_0
+&trans  &trans  &trans  &trans  &trans  &trans        &kp PLUS   &kp N7  &kp N8              &kp N9  &kp ASTERISK  &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &trans     &kp N4  &kp N5              &kp N6  &dot_morph    &trans
+&trans  &trans  &trans  &trans  &trans  &trans        &kp MINUS  &kp N1  &kp N2              &kp N3  &kp FSLH      &trans
+                        &trans  &trans  &trans        &trans     &trans  &mt RIGHT_SHIFT N0
             >;
         };
 
